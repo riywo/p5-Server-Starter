@@ -203,6 +203,7 @@ sub start_server {
                 print STDERR "worker $died_worker died unexpectedly with status:$status, restarting\n";
                 $current_worker = _start_worker($opts);
                 $last_restart_time = time();
+                $update_status->();
             } else {
                 print STDERR "old worker $died_worker died, status:$status\n";
                 delete $old_workers{$died_worker};
